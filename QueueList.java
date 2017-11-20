@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 class QueueList extends Queue
 {
     private Queue head;
@@ -47,7 +48,7 @@ class QueueList extends Queue
         if(curr.getItem().equals(item))
           stop=false;
       }
-            System.out.println(curr.getItem()+", "+curr.getNumStock()+", "+curr.getMinInv());
+            System.out.println(curr.getItem()+","+curr.getNumStock()+","+curr.getMinInv());
     }
     //saves list for future reference
     public void saveList()
@@ -64,4 +65,28 @@ class QueueList extends Queue
       writer.close();
       }catch(IOException e){System.out.println("Could not save data");}
     }
-} 
+    //loads file if exists
+    public void loadList()
+    {
+      File file = new File("test.txt");
+    try {
+
+        Scanner sc = new Scanner(file);
+
+        while (sc.hasNextLine()) {
+            String st = sc.nextLine();
+            
+            String temp[] = st.split(",");
+            String temp1 = temp[0];
+            int temp2 = Integer.parseInt(temp[1]);
+            int temp3 = Integer.parseInt(temp[2]);
+            insert(temp1,temp2,temp3);
+            
+        }
+        sc.close();
+    } 
+    catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    }
+}
