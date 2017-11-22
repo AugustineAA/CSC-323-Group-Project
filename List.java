@@ -80,6 +80,29 @@ public class List{
       	}
 
     }//end displayItem method
+	
+    public void displayList(){
+		/*	Description: Display items in list
+		 *	Precondition: List must not be empty
+		 *	Postcondition: List will be printed
+		 */
+
+		 if(!isEmpty()){
+		 	//list is not empty
+		 	curr = head;
+		 	System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
+		 		 ", Minimum: " + curr.getMinInv());
+		 	while(curr != null){
+		 		System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
+		 			 ", Minimum: " + curr.getMinInv());
+		 		curr = curr.nextItem;
+		 	}
+		 }
+		 else{
+		 	System.out.println("Error: Cannot display list because list is empty");
+		 }
+
+     }//end displayList method
 
     public void saveList(){
     	/*	Description: Saves the current list to a file
