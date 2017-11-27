@@ -44,7 +44,7 @@ public class Test
       myPanel.add(int1);
       myPanel.add(new JLabel("Min Inv Amount:"));
       myPanel.add(int2);
-   String temp = JOptionPane.showInputDialog(null,myPanel,"Does Nothing");
+   String temp = JOptionPane.showInputDialog(null,myPanel,"This text does Nothing");
    int stockAmount = Integer.parseInt(int1.getText());
    int minAmount = Integer.parseInt(int2.getText());
    item.itemExists(input.getText(),stockAmount,minAmount);
