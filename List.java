@@ -178,7 +178,7 @@ public class List{
              //end of list, item not found
              stop = false;
              insert(item,stock,minAmount);
-             //calls insert to add item if not found in list
+             //calls insert method to add item if not found in list
             }
            }
        }
