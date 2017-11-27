@@ -183,5 +183,5 @@ public class List{
            }
        }
 
-    }//end displayItem method
+    }//end itemExists method
 }//end class
