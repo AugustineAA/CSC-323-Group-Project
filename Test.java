@@ -6,7 +6,7 @@ public class Test
    boolean go = true;
    while(go){
    String[] options = new String[] {"Add Item", "Add User", "Add Employee", "Update Info"};
-    int response = JOptionPane.showOptionDialog(null, "Select a Command", "Title",
+    int response = JOptionPane.showOptionDialog(null, "Select a Command", "Think of a Title",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
         null, options, options[0]);
     if(response==0)
@@ -30,21 +30,19 @@ public class Test
    
    while(addAnother)
    {
-   //String input = JOptionPane.showInputDialog(null,"Enter Item Name");
-   //String int1 = JOptionPane.showInputDialog(null,"Enter Stock Amount");
-   //String int2 = JOptionPane.showInputDialog(null,"Enter Min Amount until Reorder");
-   JTextField input = new JTextField(5);
    JTextField int1 = new JTextField(5);
    JTextField int2 = new JTextField(5);
-     JPanel myPanel = new JPanel();
+   JTextField input = new JTextField(5);
+   JPanel myPanel = new JPanel();
+      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
       myPanel.add(new JLabel("Item Name:"));
       myPanel.add(input);
-      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
       myPanel.add(new JLabel("Stock Amount:"));
       myPanel.add(int1);
-      myPanel.add(new JLabel("Min Inv Amount:"));
+      myPanel.add(Box.createVerticalGlue()); // a spacer
+      myPanel.add(new JLabel("Min Inv Amount till Reorder:"));
       myPanel.add(int2);
-   String temp = JOptionPane.showInputDialog(null,myPanel,"This text does Nothing");
+   JOptionPane.showMessageDialog(null,myPanel,"Think of a Title",JOptionPane.PLAIN_MESSAGE);
    int stockAmount = Integer.parseInt(int1.getText());
    int minAmount = Integer.parseInt(int2.getText());
    item.itemExists(input.getText(),stockAmount,minAmount);
