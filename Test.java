@@ -1,4 +1,4 @@
-import javax.swing.JOptionPane; 
+import javax.swing.*; 
 public class Test 
 {
  public static void main(String args[])
@@ -30,12 +30,24 @@ public class Test
    
    while(addAnother)
    {
-   String input = JOptionPane.showInputDialog(null,"Enter Item Name");
-   String int1 = JOptionPane.showInputDialog(null,"Enter Stock Amount");
-   String int2 = JOptionPane.showInputDialog(null,"Enter Min Amount until Reorder");
-   int stockAmount = Integer.parseInt(int1);
-   int minAmount = Integer.parseInt(int2);
-   item.itemExists(input,stockAmount,minAmount);
+   //String input = JOptionPane.showInputDialog(null,"Enter Item Name");
+   //String int1 = JOptionPane.showInputDialog(null,"Enter Stock Amount");
+   //String int2 = JOptionPane.showInputDialog(null,"Enter Min Amount until Reorder");
+   JTextField input = new JTextField(5);
+   JTextField int1 = new JTextField(5);
+   JTextField int2 = new JTextField(5);
+     JPanel myPanel = new JPanel();
+      myPanel.add(new JLabel("Item Name:"));
+      myPanel.add(input);
+      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+      myPanel.add(new JLabel("Stock Amount:"));
+      myPanel.add(int1);
+      myPanel.add(new JLabel("Min Inv Amount:"));
+      myPanel.add(int2);
+   String temp = JOptionPane.showInputDialog(null,myPanel,"Does Nothing");
+   int stockAmount = Integer.parseInt(int1.getText());
+   int minAmount = Integer.parseInt(int2.getText());
+   item.itemExists(input.getText(),stockAmount,minAmount);
    if(JOptionPane.showConfirmDialog(null,"Enter another item?", "Add Another",
         JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
      addAnother=true;
