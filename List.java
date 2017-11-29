@@ -89,8 +89,6 @@ public class List{
    if(!isEmpty()){
     //list is not empty
     curr = head;
-    System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
-      ", Minimum: " + curr.getMinInv());
     while(curr != null){
      System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
        ", Minimum: " + curr.getMinInv());
@@ -182,6 +180,27 @@ public class List{
             }
            }
        }
-
     }//end itemExists method
+        public void sortList()
+        {
+            File file = new File("test.txt");
+          try {
+            Scanner sc = new Scanner(file);
+            ArrayList<String> t1 = new ArrayList<String>();
+          while(sc.hasNext()){
+            String temp = sc.next();
+            t1.add(temp);
+          }
+            sc.close();
+            Collections.sort(t1);
+            PrintWriter writer = new PrintWriter("test.txt","UTF-8");
+            for(String s:t1)
+              writer.println(s);
+            writer.close();
+            }
+          catch(IOException e)
+          {
+            System.out.println("Error: Could not sort list");
+          }
+        }
 }//end class

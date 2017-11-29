@@ -8,7 +8,7 @@ public class Test
    ImageIcon icon = new ImageIcon("dog.jpg");
    
    while(go){
-   String[] options = new String[] {"Add Item", "Add User", "Add Employee", "Update Info"};
+   String[] options = new String[] {"Add Item", "Add User", "Add Employee", "Update Info", "Display List"};
     int response = JOptionPane.showOptionDialog(null, "Select a Command", "Think of a Title",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
         icon, options, options[0]);
@@ -20,13 +20,15 @@ public class Test
       go=false;
     else if(response==3)
       go=false;
+    else if(response==4)
+      disList();
     else
       go=false;
    }
    System.out.println("To be implemented");
      //Others to be implemented
  }
- public static void addItem()
+ public static void addItem()//add item to list
  {
    List item = new List();
    item.loadList();
@@ -61,6 +63,14 @@ public class Test
    else
      addAnother=false;
    }
+   item.sortList();
    item.saveList();
+ }
+ public static void disList()//sorts and displays list
+ {
+   List item = new List();
+   item.sortList();
+   item.loadList();
+   item.displayList();
  }
 }
