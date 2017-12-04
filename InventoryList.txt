@@ -1,0 +1,4 @@
+BFGoodrich,20,0
+Bridgestone,12,0
+Cooper,30,0
+HubCaps,21,2
