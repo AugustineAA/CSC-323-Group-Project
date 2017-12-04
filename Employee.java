@@ -1,4 +1,3 @@
- Changes-By-Guerrero
 /* Description: This class represents an employee for the company J.Jacks Tires. It extends the
  *  person class to include additional information relevant to the employee
  *
@@ -10,7 +9,6 @@
  *  totalHoursCurrentYear: double = stores the cumulative of hours worked by employee for current year
  *  hoursTwoWeeks: double = stores the cumulative of hours worked by employee for two weeks - to be used
  *   when generating summary every two weeks for pay
-
  *
  */
 
@@ -21,7 +19,6 @@ import java.util.Date;
 import java.text.DateFormat;
 
 public class Employee extends Person{
-Changes-By-Guerrero
  //private member variables
  private String middleName;
  private String ssn;
@@ -321,4 +318,5 @@ Changes-By-Guerrero
     "\nEmail: " + super.getEmail() + "\nPosition Title: " + getPositionTitle() +
     "\nNet Hours Worked as of Today: " + getHoursForYear() + "\nNet Pay as of Today: " + calculateCurrentNetPay()+"\n\n");
  }//end displayIncomeTaxInfo method
+
 }//end class

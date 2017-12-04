@@ -1,17 +1,14 @@
- Changes-By-Guerrero
 /* Description: This class creates and stores information for customers of the company
  *  J. Jacks Tire Service. Information stored include first name, last name, customer number,
  *  vehicle(s) owned that have been worked on by company.
  *
  * Variable Descriptions:
  *  customerNum: int = stores a predetermined customer number
-
  *
  */
 import java.util.Scanner;
 
  public class Customer extends Person{
- Changes-By-Guerrero
   //private member variables
   private int customerNum;
  private Vehicle headVehicle; //head pointer for list of vehicles owned by customer
