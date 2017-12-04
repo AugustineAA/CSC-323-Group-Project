@@ -4,16 +4,28 @@ public class Command
 {
   public void login()//login screen should go here
   {
-            commandList();
+   ImageIcon icon = new ImageIcon("tire.png");
+    
+    JTextField int1 = new JTextField(10);
+    JTextField input = new JTextField(10);
+    JButton b1 = new JButton("Login");
+    JPanel myPanel = new JPanel();
+      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+      myPanel.add(new JLabel("Employee Name:"));
+      myPanel.add(input);
+      myPanel.add(new JLabel("Password:"));
+      myPanel.add(int1);
+      UIManager.put("OptionPane.okButtonText","Login");
+   JOptionPane.showMessageDialog(null,myPanel,"Login Screen",JOptionPane.PLAIN_MESSAGE,icon);
   }
   public void commandList()//lists all commands
   {
        boolean go = true;
-   
+   UIManager.put("OptionPane.okButtonText","Ok");
    ImageIcon icon = new ImageIcon("tire.png");
    
    while(go){
-   String[] options = new String[] {"Add Misc", "Add/Remove Tires", "Update Item", "Display List"};
+   String[] options = new String[] {"Add Misc", "Add/Remove Tires", "Update Item", "Exit Item Menu"};
     int response = JOptionPane.showOptionDialog(null, "Select a Command", "Protoype",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
         icon, options, options[0]);
@@ -24,7 +36,7 @@ public class Command
     else if(response==2)//update item
       updateItem();
     else if(response==3)//display list
-      disList();
+      go=false;
     else
       go=false;
    }
@@ -121,7 +133,7 @@ public class Command
     myPanel.add(tireList);
     
     JTextField amount = new JTextField(5);
-    JTextField inStock = new JTextField(5);
+    //JTextField inStock = new JTextField(5);
     JRadioButton add = new JRadioButton("Add");
     JRadioButton remove = new JRadioButton("Remove");
     ButtonGroup bg = new ButtonGroup();
@@ -149,12 +161,5 @@ public class Command
       JOptionPane.showMessageDialog(null,stock+" "+value+"'s has been removed","Protoype",JOptionPane.PLAIN_MESSAGE);
     }
     item.saveList();
- }
- public void disList()//sorts and displays list
- {
-   List item = new List();
-   item.loadList();
-   item.sortList();
-   JOptionPane.showMessageDialog(null,item.displayList(),"Protoype",JOptionPane.PLAIN_MESSAGE);
  }
 }

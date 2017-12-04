@@ -108,8 +108,8 @@ public class List{
     //list is not empty
     curr = head;
     while(curr != null){
-     System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
-       ", Minimum: " + curr.getMinInv());
+     /*System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
+       ", Minimum: " + curr.getMinInv());*/
      temp+=("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
        ", Minimum: " + curr.getMinInv())+"\n";
      curr = curr.nextItem;
@@ -127,7 +127,7 @@ public class List{
       * Postcondition: List will be saved to a file, each parameter will be separated by a comma
       */
        try{
-       PrintWriter writer = new PrintWriter("test.txt","UTF-8");
+       PrintWriter writer = new PrintWriter("InventoryList.txt","UTF-8");
        curr = head;
        while(curr != null){
         writer.println(curr.getItem() + "," + curr.getNumStock() + "," + curr.getMinInv());
@@ -145,7 +145,7 @@ public class List{
       * Precondition: File must exist in same folder
       * Postcondition: List in file will be saved to a list to be examined
       */
-     File file = new File("test.txt");
+     File file = new File("InventoryList.txt");
      try {
          Scanner sc = new Scanner(file);
          while (sc.hasNextLine()) {
@@ -273,7 +273,7 @@ public class List{
       * Postcondition:
       */
         {
-            File file = new File("test.txt");
+            File file = new File("InventoryList.txt");
           try {
             Scanner sc = new Scanner(file);
             ArrayList<String> t1 = new ArrayList<String>();
@@ -283,7 +283,7 @@ public class List{
           }
             sc.close();
             Collections.sort(t1, String.CASE_INSENSITIVE_ORDER);
-            PrintWriter writer = new PrintWriter("test.txt","UTF-8");
+            PrintWriter writer = new PrintWriter("InventoryList.txt","UTF-8");
             for(String s:t1)
               writer.println(s);
             writer.close();
@@ -301,7 +301,7 @@ public class List{
       */
         {
             ArrayList<String> t1 = new ArrayList<String>();
-            File file = new File("test.txt");
+            File file = new File("InventoryList.txt");
           try {
             Scanner sc = new Scanner(file);
           while(sc.hasNext()){
