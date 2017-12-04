@@ -9,7 +9,9 @@ import java.util.Scanner;
 public class TestV2{
 
  public static void main(String args[]) throws Exception{
-  boolean go = true;
+  Command login = new Command();
+  login.login();
+   boolean go = true;
    ImageIcon icon = new ImageIcon("tire.png");
    Scanner input = new Scanner(System.in);
 
@@ -33,12 +35,13 @@ public class TestV2{
          go=false;
     }
     System.out.println("To be implemented");
+    input.close();
       //Others to be implemented
  }//end main method
 
   public static void addItem(){//add item to list
     Command cmd =new Command();
-    cmd.login();
+    cmd.commandList();
  }//end addItem method
 
  public static void addEmployee(){//add item to list
@@ -102,6 +105,7 @@ public class TestV2{
  }//end addItem method
 
  public static void displayEmployee() throws Exception{
+   UIManager.put("OptionPane.okButtonText","Ok");
   EmployeeList list = new EmployeeList();
   try{
    list.loadList();
@@ -116,8 +120,8 @@ public class TestV2{
  public static void disList(){
   //sorts and displays list
    List item = new List();
+   UIManager.put("OptionPane.okButtonText","Ok");
    item.loadList();
-   item.sortList();
    JOptionPane.showMessageDialog(null,item.displayList(),"Protoype",JOptionPane.PLAIN_MESSAGE);
   }//end disList method
 

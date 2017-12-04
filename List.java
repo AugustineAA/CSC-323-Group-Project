@@ -108,8 +108,8 @@ public class List{
     //list is not empty
     curr = head;
     while(curr != null){
-     System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
-       ", Minimum: " + curr.getMinInv());
+     /*System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
+       ", Minimum: " + curr.getMinInv());*/
      temp+=("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
        ", Minimum: " + curr.getMinInv())+"\n";
      curr = curr.nextItem;

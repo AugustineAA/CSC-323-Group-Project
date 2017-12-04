@@ -4,12 +4,24 @@ public class Command
 {
   public void login()//login screen should go here
   {
-            commandList();
+   ImageIcon icon = new ImageIcon("tire.png");
+    
+    JTextField int1 = new JTextField(10);
+    JTextField input = new JTextField(10);
+    JButton b1 = new JButton("Login");
+    JPanel myPanel = new JPanel();
+      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+      myPanel.add(new JLabel("Employee Name:"));
+      myPanel.add(input);
+      myPanel.add(new JLabel("Password:"));
+      myPanel.add(int1);
+      UIManager.put("OptionPane.okButtonText","Login");
+   JOptionPane.showMessageDialog(null,myPanel,"Login Screen",JOptionPane.PLAIN_MESSAGE,icon);
   }
   public void commandList()//lists all commands
   {
        boolean go = true;
-   
+   UIManager.put("OptionPane.okButtonText","Ok");
    ImageIcon icon = new ImageIcon("tire.png");
    
    while(go){
@@ -121,7 +133,7 @@ public class Command
     myPanel.add(tireList);
     
     JTextField amount = new JTextField(5);
-    JTextField inStock = new JTextField(5);
+    //JTextField inStock = new JTextField(5);
     JRadioButton add = new JRadioButton("Add");
     JRadioButton remove = new JRadioButton("Remove");
     ButtonGroup bg = new ButtonGroup();
