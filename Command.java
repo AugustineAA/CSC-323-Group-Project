@@ -153,8 +153,8 @@ public class Command
  public void disList()//sorts and displays list
  {
    List item = new List();
-   item.sortList();
    item.loadList();
-   item.displayList();
+   item.sortList();
+   JOptionPane.showMessageDialog(null,item.displayList(),"Protoype",JOptionPane.PLAIN_MESSAGE);
  }
 }

@@ -98,24 +98,26 @@ public class List{
 
     }//end displayItem method
  
-    public void displayList(){
+    public String displayList(){
   /* Description: Display items in list
    * Precondition: List must not be empty
    * Postcondition: List will be printed
    */
-
+      String temp = "";
    if(!isEmpty()){
     //list is not empty
     curr = head;
     while(curr != null){
      System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
        ", Minimum: " + curr.getMinInv());
+     temp+=("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
+       ", Minimum: " + curr.getMinInv())+"\n";
      curr = curr.nextItem;
     }
    }
    else{
     System.out.println("Error: Cannot display list because list is empty");
-   }
+   }return temp;
 
      }//end displayList method
 
@@ -280,7 +282,7 @@ public class List{
             t1.add(temp);
           }
             sc.close();
-            Collections.sort(t1);
+            Collections.sort(t1, String.CASE_INSENSITIVE_ORDER);
             PrintWriter writer = new PrintWriter("test.txt","UTF-8");
             for(String s:t1)
               writer.println(s);
