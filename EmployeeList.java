@@ -1,4 +1,6 @@
+ Changes-By-Guerrero
 /* This class records all employees for J. Jacks Tire Service
+
  *
  *
  *
@@ -11,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
  public class EmployeeList{
+Changes-By-Guerrero
  //private member variables
  private Employee headEmp;
  Scanner input = new Scanner(System.in);
@@ -207,8 +210,6 @@ import java.io.FileNotFoundException;
       //file does not exist
          e.printStackTrace();
      }
+
     }//end loadList method
-
-
-
  }//end class
