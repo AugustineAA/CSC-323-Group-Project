@@ -1,11 +1,6 @@
 /* Changes Made:
- *  Added comments and descriptions for methods.
- *  Changed the name of class from QueueList to List
- *  Removed the extend statement so that this class uses the item class but does not extend it
- *  Added indentation to statements within if/else statement
- *  Changed name of print method to displayItem because the name print is ambiguous. Method actually searches
- *   for an item within list and displays its information
- *
+ *Added SendFirstItem, which sends item name to gui for dropdown menu
+ * New methods sortList,insert with 2 parameters
  */
 
 import java.io.*;
@@ -27,7 +22,30 @@ public class List{
         return head == null;
     }//end isEmpty method
 
-
+    public void insert(String item,int numStock){
+     /*Description: Inserts a new item at the end of the list
+      *Precondition: List must be instantiated. Provide String item (name), int numStock (current stock),
+      * and int minInv (minimum number allowed in stock before reorder)
+      *Postcondition: Item will be added to end of list
+      */
+  Item newItem = new Item(item, numStock);
+  curr = head;
+        if(curr != null){
+         //list is not empty, find end of list
+         while(curr.nextItem != null)
+          curr = curr.nextItem;
+          if(curr.nextItem == null){
+           //end of list found, insert newItem here
+           curr.nextItem = newItem;
+          }
+       }
+        else{
+         //curr is null, list is empty
+        head = newItem;
+         curr = head;
+        }
+    }//end insert method
+    
     public void insert(String item,int numStock, int minInv){
      /*Description: Inserts a new item at the end of the list
       *Precondition: List must be instantiated. Provide String item (name), int numStock (current stock),
@@ -80,24 +98,26 @@ public class List{
 
     }//end displayItem method
  
-    public void displayList(){
+    public String displayList(){
   /* Description: Display items in list
    * Precondition: List must not be empty
    * Postcondition: List will be printed
    */
-
+      String temp = "";
    if(!isEmpty()){
     //list is not empty
     curr = head;
     while(curr != null){
      System.out.println("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
        ", Minimum: " + curr.getMinInv());
+     temp+=("Item: " + curr.getItem() + ", Stock: " + curr.getNumStock() +
+       ", Minimum: " + curr.getMinInv())+"\n";
      curr = curr.nextItem;
     }
    }
    else{
     System.out.println("Error: Cannot display list because list is empty");
-   }
+   }return temp;
 
      }//end displayList method
 
@@ -146,6 +166,42 @@ public class List{
          e.printStackTrace();
      }
     }//end loadList method
+    
+    public void itemExists(String item,int stock){
+     /* Description: Checks to see if item exists and overwrites it
+      * Precondition: Provide the name of item, stock amount, and min amount till reorder
+      * Postcondition:
+      */
+       curr = head; //start at beginning of list
+       boolean stop = true;
+       if(curr==null){
+         //checks if list isnt empty
+         stop=false;
+         insert(item,stock);
+       }
+       while(stop){
+         //curr = curr.nextItem;
+         String currName = curr.getItem().toLowerCase();
+         String itemName = item.toLowerCase();
+         if(currName.compareTo(itemName) == 0){
+          //item found
+            curr.setItem(item);
+            curr.setNumStock(stock);
+            stop = false;
+         }
+           if(stop){
+            //continue examining list
+            curr = curr.nextItem;
+            if(curr == null){
+             //end of list, item not found
+             stop = false;
+             insert(item,stock);
+             //calls insert method to add item if not found in list
+            }
+           }
+       }
+    }//end itemExists method
+    
         public void itemExists(String item,int stock,int minAmount){
      /* Description: Checks to see if item exists and overwrites it
       * Precondition: Provide the name of item, stock amount, and min amount till reorder
@@ -181,7 +237,41 @@ public class List{
            }
        }
     }//end itemExists method
+        
+      public int displayStock(String item){
+     /* Description: Checks to see if item exists and prints its information
+      * Precondition: Provide the name of item
+      * Postcondition:
+      */
+       curr = head; //start at beginning of list
+       int amount=0;
+       boolean stop = true;
+       while(stop){
+         //curr = curr.nextItem;
+         String currName = curr.getItem().toLowerCase();
+         String itemName = item.toLowerCase();
+         if(currName.compareTo(itemName) == 0){
+          //item found
+            stop = false;
+            amount = curr.getNumStock();
+         }
+           if(stop){
+            //continue examining list
+            curr = curr.nextItem;
+            if(curr == null){
+             //end of list, item not found
+             stop = false;
+            }
+           }
+       }
+       return amount;
+     }//end displayStock method
+        
         public void sortList()
+     /* Description: Sorts the list
+      * Precondition: List must not be empty
+      * Postcondition:
+      */
         {
             File file = new File("test.txt");
           try {
@@ -192,7 +282,7 @@ public class List{
             t1.add(temp);
           }
             sc.close();
-            Collections.sort(t1);
+            Collections.sort(t1, String.CASE_INSENSITIVE_ORDER);
             PrintWriter writer = new PrintWriter("test.txt","UTF-8");
             for(String s:t1)
               writer.println(s);
@@ -203,4 +293,29 @@ public class List{
             System.out.println("Error: Could not sort list");
           }
         }
+        
+          public ArrayList<String> sendFirstItem()//sends only item name
+     /* Description: Sends item name to gui dropdown menu
+      * Precondition:
+      * Postcondition:
+      */
+        {
+            ArrayList<String> t1 = new ArrayList<String>();
+            File file = new File("test.txt");
+          try {
+            Scanner sc = new Scanner(file);
+          while(sc.hasNext()){
+            String temp = sc.nextLine().split(",")[0];
+            t1.add(temp);
+          }
+            sc.close();
+            Collections.sort(t1);
+            return t1;
+            }
+          catch(IOException e)
+          {
+            System.out.println("Error: Could not find list");
+          }
+          return t1;
+          }
 }//end class
