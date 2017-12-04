@@ -22,7 +22,6 @@ public class Person{
 	private String email;
 	private String address;
 
-
 	//default constructor
 	public Person(){
 	}
@@ -62,13 +61,8 @@ public class Person{
 		 *	Precondition: Provide a string of length ten representing phone number
 		 *	Postcondition: If length ten then phone will be set, otherwise error message will be returned
 		 */
-		 if(phone.length() == 10){
 		 	this.phone = phone;
-		 }
-		 else{
-		 	System.out.println("Error: Phone number was not set. It must include area code and be in the format:" +
-		 		" 1234567890");
-		 }
+
 	}//end setPhone method
 
 	public String getPhone(){

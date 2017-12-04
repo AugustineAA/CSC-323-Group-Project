@@ -1,0 +1,5 @@
+J,Unknown,Jacks,123456789,9876543210,123 jacks lane nacogdoches tx 75960, jjacks@gmail.com, owner, 50.00
+Mervis,Unknown,Dorfman,234567890,8765432109,456 jacks lane nacogdoches tx 75960,dorfman@gmail.com,front end manager, 25.00
+Harry,James,Potter,345678901,765432109,4 privet drive nacogdoches tx 75960,potter@yahoo.com,laborer,10.00
+Hermione,Jane,Granger,4567891230,563201456,512 flower rd nacogdoches tx 75960,granger@yahoo.com,customer service, 12.00
+Ron,Unknown,Weasley,569129874,1236987412,147 lion st nacogdoches tx 75960,weasley@gmail.com,laborer,10.00
